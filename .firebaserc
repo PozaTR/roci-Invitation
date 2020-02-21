@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "roci-invitation": {
+      "hosting": {
+        "roci-invitation": [
+          "roci-invitation"
+        ]
+      }
+    }
+  }
+}
