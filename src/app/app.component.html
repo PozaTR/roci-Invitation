@@ -1,12 +1,24 @@
+<header class="main-header">
+  <nav class="main-nav">
+    <ul class="main-nav__list">
+      <li class="main-nav__element">
+        <a class="main-nav__link" href="#">Introducción</a>
+      </li>
+      <li class="main-nav__element">
+        <a class="main-nav__link" href="#">Fotos</a>
+      </li>
+      <li class="main-nav__element">
+        <a class="main-nav__link" href="#">Localización</a>
+      </li>
+      <li class="main-nav__element">
+        <a class="main-nav__link" href="#">Confirmación</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+<main>
+  <router-outlet></router-outlet>
+</main>
+<footer></footer>
 
-<div class="toolbar" role="banner">
-  <div class="test">Holaaaaaaaaaas</div>
-  <ul>
-    <li class="text" *ngFor="let item of items | async">
-      {{item.nombre}}
-    </li>
-  </ul>
 
-</div>
-
-<router-outlet></router-outlet>
