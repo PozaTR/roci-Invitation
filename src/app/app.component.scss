@@ -1,0 +1,33 @@
+@import "variables";
+
+:host {
+  background-color: $c-base;
+  display: block;
+  min-height: 100vh;
+}
+
+.main-header {
+
+}
+
+.main-nav {
+  &__list {
+
+  }
+
+  &__element {
+
+  }
+
+  &__link {
+
+  }
+}
+
+.main-content {
+
+}
+
+.main-footer {
+
+}

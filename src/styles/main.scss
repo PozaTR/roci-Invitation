@@ -1,5 +1,7 @@
-@import 'variables.scss';
+@import 'variables';
+@import 'mixins';
 
-.test {
-  background-color: $c-secondary;
+.main-wrapper {
+  margin: 0 auto;
+  max-width: pxToRem($wrapper);
 }

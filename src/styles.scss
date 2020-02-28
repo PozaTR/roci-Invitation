@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import 'styles/variables.scss';
-@import 'styles/mixins.scss';
+@import 'styles/core/variables';
+@import 'styles/core/mixins';
 @import 'styles/reset.scss';
 @import 'styles/main.scss';
