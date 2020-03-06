@@ -6,12 +6,19 @@ import {Component, HostBinding, OnInit} from '@angular/core';
   styleUrls: ['./main-header.component.scss']
 })
 export class MainHeaderComponent implements OnInit {
+  public isNavHidden: boolean;
 
-  constructor() { }
+  constructor() {
+    this.isNavHidden = true;
+  }
 
   @HostBinding('class.main-header') hostClass = true;
 
   ngOnInit(): void {
+  }
+
+  onToogleNav() {
+    this.isNavHidden = !this.isNavHidden;
   }
 
 }
