@@ -5,3 +5,8 @@
   margin: 0 auto;
   max-width: pxToRem($wrapper);
 }
+
+body {
+  font-family: $t-primary;
+
+}

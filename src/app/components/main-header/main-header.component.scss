@@ -1,4 +1,5 @@
 @import "variables";
+@import "mixins";
 
 
 :host {
@@ -11,15 +12,46 @@
 }
 
 .main-nav {
-  &__list {
+  position: relative;
 
+  &__button-menu {
+    background-color: $c-detail;
+    color: $c-primary;
+    font-size: pxToRem($ts-icon-lg);
+    line-height: 0.8;
+    padding: pxToRem($space-xs);
+  }
+
+  &__list {
+    background-color: $c-white;
+    left: 0;
+    padding: pxToRem($space-sm);
+    position: absolute;
+    top: 100%;
+
+    &--hidden {
+      top: 0;
+      transform: translateY(-100%);
+    }
   }
 
   &__element {
-
+    padding-bottom: pxToRem($space-xs);
+    &:last-child {
+      padding-bottom: 0;
+    }
   }
 
   &__link {
+    color: $c-primary;
+    display: inline-block;
+    line-height: 1;
+    padding: pxToRem($space-xs);
+    text-decoration: none;
 
+    &__icon {
+      font-size: pxToRem($ts-icon-md);
+      margin-right: pxToRem($space-xs);
+    }
   }
 }
