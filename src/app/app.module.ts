@@ -11,6 +11,7 @@ import { IndexComponent } from './containers/index/index.component';
 import { CarrouselComponent } from './components/carrousel/carrousel.component';
 import { MapComponent } from './components/map/map.component';
 import { RsvpComponent } from './components/rsvp/rsvp.component';
+import { MainHeaderComponent } from './components/main-header/main-header.component';
 
 
 
@@ -20,7 +21,8 @@ import { RsvpComponent } from './components/rsvp/rsvp.component';
     IndexComponent,
     CarrouselComponent,
     MapComponent,
-    RsvpComponent
+    RsvpComponent,
+    MainHeaderComponent
   ],
   imports: [
     BrowserModule,

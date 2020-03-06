@@ -1,0 +1,25 @@
+@import "variables";
+
+
+:host {
+  background: $c-primary;
+  display: block;
+}
+
+.main-header {
+
+}
+
+.main-nav {
+  &__list {
+
+  }
+
+  &__element {
+
+  }
+
+  &__link {
+
+  }
+}
