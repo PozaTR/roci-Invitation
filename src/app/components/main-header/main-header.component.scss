@@ -54,4 +54,26 @@
       margin-right: pxToRem($space-xs);
     }
   }
+
+  @media all and (min-width: 768px) {
+    &__button-menu {
+      display: none;
+    }
+
+    &__list {
+      background-color: transparent;
+      display: flex;
+      margin: 0 pxToRem(-$space-sm);
+      position: static;
+      transform: none;
+    }
+
+    &__element {
+      margin: 0 pxToRem($space-sm);
+    }
+
+    &__link {
+      color: $c-white;
+    }
+  }
 }
