@@ -12,14 +12,29 @@
 }
 
 .main-nav {
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
   position: relative;
 
   &__button-menu {
     background-color: $c-detail;
     color: $c-primary;
     font-size: pxToRem($ts-icon-lg);
+    left: pxToRem($space-sm);
     line-height: 0.8;
-    padding: pxToRem($space-xs);
+    padding: pxToRem($space-sm);
+    position: absolute;
+    top: 50%;
+    transform: translateY(- 50%);
+  }
+
+  &__title {
+    color: $c-white;
+    font-family: $t-secondary;
+    font-size: pxToRem($ts-main-title);
+    font-weight: $t-bold;
+    padding: pxToRem($space-md);
   }
 
   &__list {
@@ -56,14 +71,19 @@
   }
 
   @media all and (min-width: 768px) {
+    justify-content: space-between;
+
     &__button-menu {
       display: none;
+    }
+
+    &__title {
+      width: 100%;
     }
 
     &__list {
       background-color: transparent;
       display: flex;
-      margin: 0 pxToRem(-$space-sm);
       position: static;
       transform: none;
     }
