@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import { IndexComponent } from './containers/index/index.component';
 import { CarrouselComponent } from './components/carrousel/carrousel.component';
 import { MapComponent } from './components/map/map.component';
@@ -28,7 +29,8 @@ import { MainHeaderComponent } from './components/main-header/main-header.compon
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    AngularFireStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
