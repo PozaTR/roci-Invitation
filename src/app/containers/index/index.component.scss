@@ -1,0 +1,30 @@
+@import "variables";
+@import "mixins";
+
+:host {
+  display: block;
+  padding: pxToRem($space-md);
+}
+
+.index {
+  &__section {
+    padding-bottom: pxToRem($space-lg);
+  }
+
+  &__title {
+    color: $c-primary;
+    font-family: $t-secondary;
+    font-size: pxToRem($ts-titles);
+    font-weight: $t-bold;
+    padding-bottom: pxToRem($space-sm);
+  }
+
+  &__text {
+    line-height: 1.4;
+  }
+
+  &__carrousel {
+    margin: 0 auto;
+    padding-bottom: pxToRem($space-sm);
+  }
+}
