@@ -28,3 +28,9 @@
     padding-bottom: pxToRem($space-sm);
   }
 }
+
+::ng-deep {
+  .anchor-nav__helper {
+    margin-top: pxToRem(-$space-md);
+  }
+}

@@ -8,5 +8,17 @@
 
 body {
   font-family: $t-primary;
-
 }
+
+.anchor-nav {
+  &__section {
+    position: relative;
+  }
+
+  &__helper {
+    left: 0;
+    position: absolute;
+    top: pxToRem(-$header-heigth);
+  }
+}
+
