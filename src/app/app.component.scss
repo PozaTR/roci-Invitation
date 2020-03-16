@@ -1,4 +1,5 @@
 @import "variables";
+@import "mixins";
 
 :host {
   background-color: $c-base;
@@ -7,7 +8,7 @@
 }
 
 .main-content {
-
+  padding-top: pxToRem($header-heigth);
 }
 
 .main-footer {

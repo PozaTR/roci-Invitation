@@ -5,10 +5,9 @@
 :host {
   background: $c-primary;
   display: block;
-}
-
-.main-header {
-
+  position: fixed;
+  width: 100%;
+  z-index: 1;
 }
 
 .main-nav {
