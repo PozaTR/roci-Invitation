@@ -1,0 +1,26 @@
+@import "variables";
+@import "mixins";
+$pictureWidth: 300;
+
+:host {
+  display: block;
+  overflow: hidden;
+  width: pxToRem($pictureWidth);
+}
+.carrousel {
+
+  &__list {
+    align-items: center;
+    display: flex;
+    overflow: auto;
+  }
+
+  &__element {
+    flex-shrink: 0;
+    width: pxToRem($pictureWidth);
+  }
+
+  &__image {
+    width: 100%;
+  }
+}
