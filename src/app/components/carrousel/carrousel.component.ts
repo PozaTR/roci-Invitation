@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { AngularFireStorage } from '@angular/fire/storage';
-import 'firebase/storage';
+import {Component, Input, OnInit} from '@angular/core';
+
 
 @Component({
   selector: 'app-carrousel, [app-carrousel]',
@@ -8,23 +7,13 @@ import 'firebase/storage';
   styleUrls: ['./carrousel.component.scss']
 })
 export class CarrouselComponent implements OnInit {
-  public pictures: string[];
+  @Input() pictureUrls: string[];
 
-  constructor(private storage: AngularFireStorage) {
-    this.pictures = [];
+  constructor() {
+    this.pictureUrls = [];
   }
 
   ngOnInit(): void {
-    const storageRef = this.storage.storage.ref('/');
-
-    storageRef.listAll().then(resp => {
-      const imagesUrlPromises = resp.items.map(item => {
-        return storageRef.child(item.fullPath).getDownloadURL();
-      });
-      Promise.all(imagesUrlPromises).then(response => {
-        this.pictures = response;
-      });
-    });
   }
 
 }

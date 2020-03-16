@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ImageStorageService} from '../../services/image-storage.service';
 
 @Component({
   selector: 'app-index',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./index.component.scss']
 })
 export class IndexComponent implements OnInit {
+  public pictureUrls: string[];
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private imageStorageService: ImageStorageService) {
+    this.pictureUrls = [];
   }
 
+  ngOnInit(): void {
+    this.imageStorageService.getPictures().then(pictureUrls => {
+      this.pictureUrls = pictureUrls;
+    });
+  }
 }
