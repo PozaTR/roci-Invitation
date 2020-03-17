@@ -5,22 +5,40 @@ $pictureWidth: 300;
 :host {
   display: block;
   overflow: hidden;
-  width: pxToRem($pictureWidth);
+  min-width: 100%;
 }
 .carrousel {
 
   &__list {
     align-items: center;
     display: flex;
-    overflow: auto;
+    overflow-x: auto;
+
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   &__element {
     flex-shrink: 0;
-    width: pxToRem($pictureWidth);
+    max-height: 384px;
+    width: 100%;
   }
 
   &__image {
     width: 100%;
+  }
+
+  @media all and(min-width: 768px) {
+    &__element {
+      width: 50%;
+    }
+  }
+
+  @media all and(min-width: 1024px) {
+    &__element {
+      width: 33.33%;
+    }
   }
 }
