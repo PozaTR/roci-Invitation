@@ -13,6 +13,8 @@ export class MapComponent implements OnInit, AfterViewInit {
   private coordinates: google.maps.LatLng;
   private mapOptions: google.maps.MapOptions;
   private marker: google.maps.Marker;
+  private userAddress: string;
+  private searchAddress: string;
 
   constructor() {
     this.lat = 40.448318;
@@ -28,6 +30,8 @@ export class MapComponent implements OnInit, AfterViewInit {
     this.marker = new google.maps.Marker({
       position: this.coordinates,
     });
+    this.userAddress = '';
+    this.searchAddress = '';
   }
 
   ngOnInit(): void {
@@ -40,6 +44,11 @@ export class MapComponent implements OnInit, AfterViewInit {
   mapInitializer() {
     this.map = new google.maps.Map(this.gmap.nativeElement, this.mapOptions);
     this.marker.setMap(this.map);
+  }
+
+  getAddress() {
+    this.searchAddress = this.userAddress;
+    console.log(this.searchAddress);
   }
 
 }

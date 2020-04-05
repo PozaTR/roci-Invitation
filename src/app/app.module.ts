@@ -13,6 +13,7 @@ import { CarrouselComponent } from './components/carrousel/carrousel.component';
 import { MapComponent } from './components/map/map.component';
 import { RsvpComponent } from './components/rsvp/rsvp.component';
 import { MainHeaderComponent } from './components/main-header/main-header.component';
+import {FormsModule} from '@angular/forms';
 
 
 
@@ -30,7 +31,8 @@ import { MainHeaderComponent } from './components/main-header/main-header.compon
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

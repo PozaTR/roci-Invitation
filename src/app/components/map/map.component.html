@@ -1,2 +1,11 @@
-<div #mapContainer id="map"></div>
+<div class="map">
+  <div class="map__user-address">
+    <input type="text" class="map__user-address__input" [(ngModel)]="userAddress" name="adress" placeholder="Introduce tu dirección">
+    <button type="button" class="map__user-address__button" (click)="getAddress()">Buscar</button>
+    <div class="map__user-address__relation">a</div>
+    <div class="map__user-address__destination">Calle Josefa Valcárcel número 10</div>
+  </div>
+  <div #mapContainer id="map"></div>
+</div>
+
 
