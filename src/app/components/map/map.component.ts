@@ -16,7 +16,7 @@ export class MapComponent implements OnInit, AfterViewInit {
   private marker: google.maps.Marker;
   public searchMarker: google.maps.Marker;
   public userAddress: string;
-  private searchAddress: string;
+  public searchAddress: string;
   public isSearching: boolean;
 
   constructor() {
