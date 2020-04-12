@@ -14,9 +14,10 @@ export class MapComponent implements OnInit, AfterViewInit {
   private coordinates: google.maps.LatLng;
   private mapOptions: google.maps.MapOptions;
   private marker: google.maps.Marker;
-  private searchMarker: google.maps.Marker;
+  public searchMarker: google.maps.Marker;
   public userAddress: string;
   private searchAddress: string;
+  public isSearching: boolean;
 
   constructor() {
     this.lat = 40.448318;
@@ -34,6 +35,7 @@ export class MapComponent implements OnInit, AfterViewInit {
     });
     this.userAddress = '';
     this.searchAddress = '';
+    this.isSearching = false;
   }
 
   ngOnInit(): void {
@@ -50,26 +52,34 @@ export class MapComponent implements OnInit, AfterViewInit {
   }
 
   getAddress() {
-    this.searchAddress = this.userAddress;
-    console.log(this.searchAddress);
-    this.geocoder.geocode( { address: this.searchAddress}, (results, status) => {
-      if (status === 'OK') {
-       // this.map.setCenter(results[0].geometry.location);
-        this.searchMarker = new google.maps.Marker({
-          map: this.map,
-          position: results[0].geometry.location,
-          animation: google.maps.Animation.DROP
-        });
-        const bounds =  new google.maps.LatLngBounds();
-        const loc = new google.maps.LatLng(this.searchMarker.getPosition().lat(), this.searchMarker.getPosition().lng());
-        bounds.extend(loc);
-        bounds.extend(this.coordinates);
-        this.map.fitBounds(bounds);
-        this.map.panToBounds(bounds);
-      } else {
-        alert('Geocode was not successful for the following reason: ' + status);
-      }
-    });
+    if (!this.isSearching) {
+      this.isSearching = true;
+      this.geocoder.geocode( { address: this.userAddress}, (results, status) => {
+        if (status === 'OK') {
+          console.log(results);
+          this.searchAddress = results[0].formatted_address;
+          this.searchMarker = new google.maps.Marker({
+            map: this.map,
+            position: results[0].geometry.location,
+            animation: google.maps.Animation.DROP
+          });
+          const bounds =  new google.maps.LatLngBounds();
+          const loc = new google.maps.LatLng(this.searchMarker.getPosition().lat(), this.searchMarker.getPosition().lng());
+          bounds.extend(loc);
+          bounds.extend(this.coordinates);
+          this.map.fitBounds(bounds);
+          this.map.panToBounds(bounds);
+        } else {
+          alert('Geocode was not successful for the following reason: ' + status);
+        }
+        this.isSearching = false;
+      });
+    }
   }
 
+  deleteAddress() {
+    this.searchAddress = '';
+    this.userAddress = '';
+    this.searchMarker.setMap(null);
+  }
 }

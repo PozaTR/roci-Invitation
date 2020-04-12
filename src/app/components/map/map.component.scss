@@ -13,6 +13,10 @@
     padding: pxToRem($space-md) 0;
     width: 325px;
 
+    &__isSearching {
+      opacity: 0.6;
+    }
+
     &__input {
       border: 1px solid $c-alternative;
       border-top-left-radius: 4px;
