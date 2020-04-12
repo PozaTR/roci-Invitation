@@ -25,6 +25,12 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-clear:before {
+  content: "\e90a";
+}
+.icon-search:before {
+  content: "\e90b";
+}
 .icon-keyboard_arrow_down:before {
   content: "\e900";
 }

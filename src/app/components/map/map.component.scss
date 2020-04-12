@@ -9,12 +9,23 @@
 .map {
   &__user-address {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     padding: pxToRem($space-md) 0;
-    width: 325px;
 
-    &__isSearching {
-      opacity: 0.6;
+    &__delete {
+      background-color: $c-error;
+      border: 1px solid $c-error;
+      border-radius: 4px;
+      color: $c-white;
+      margin-left: pxToRem($space-xs);
+    }
+
+    &__form {
+      max-width: 273px;
+
+      &--isSearching {
+        opacity: 0.6;
+      }
     }
 
     &__input {
@@ -22,7 +33,7 @@
       border-top-left-radius: 4px;
       border-bottom-left-radius: 4px;
       padding: pxToRem($space-xs);
-      width: 250px;
+      width: 230px;
     }
 
     &__button {
@@ -33,11 +44,17 @@
       border-bottom-right-radius: 4px;
       color: $c-white;
       height: 28px;
-      padding: pxToRem($space-xs)  pxToRem($space-sm);
+      padding: pxToRem($space-xs) pxToRem($space-sm);
+
+      &__text {
+        display: none;
+      }
     }
 
     &__relation {
-      padding: pxToRem($space-sm) pxToRem(64.75) pxToRem($space-sm) pxToRem($space-sm);
+      box-sizing: border-box;
+      max-width: 273px;
+      padding: pxToRem($space-sm);
       text-align: center;
       width: 100%;
     }
@@ -48,4 +65,30 @@
     }
   }
 
+
+  @media all and(min-width: 768px) {
+    &__user-address {
+      &__form {
+        max-width: 325px;
+      }
+
+      &__input {
+        width: 250px;
+      }
+
+      &__button {
+        &__text {
+          display: block;
+        }
+
+        &__icon {
+          display: none;
+        }
+      }
+
+      &__relation {
+        max-width: 325px;
+      }
+    }
+  }
 }

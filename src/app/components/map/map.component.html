@@ -5,9 +5,14 @@
       <button type="button" class="map__user-address__delete" (click)="deleteAddress()">X</button>
     </div>
     <ng-template #inputAddress>
-      <form (submit)="getAddress()" class="map__user-address__form" [ngClass]="{'map__user-address__isSearching': isSearching}">
+      <form (submit)="getAddress()"
+            class="map__user-address__form"
+            [ngClass]="{'map__user-address__form--isSearching': isSearching}">
         <input type="text" class="map__user-address__input" [(ngModel)]="userAddress" name="address" placeholder="Introduce tu dirección">
-        <button type="submit" class="map__user-address__button">Buscar</button>
+        <button type="submit" class="map__user-address__button">
+          <span class="map__user-address__button__text">Buscar</span>
+          <span class="map__user-address__button__icon"><i class="icon-search"></i></span>
+        </button>
       </form>
     </ng-template>
     <div class="map__user-address__relation">a</div>
