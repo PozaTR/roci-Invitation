@@ -20,6 +20,7 @@ export class MapComponent implements OnInit, AfterViewInit {
   public userAddress: string;
   public searchAddress: string;
   public isSearching: boolean;
+  public travelModeConfig: object;
 
   constructor() {
     this.lat = 40.448318;
@@ -40,6 +41,20 @@ export class MapComponent implements OnInit, AfterViewInit {
     this.isSearching = false;
     this.directionsService = new google.maps.DirectionsService();
     this.directionsRenderer = new google.maps.DirectionsRenderer();
+    this.travelModeConfig = {
+      driving: {
+        name: google.maps.TravelMode.DRIVING,
+        icon: 'icon-directions_car'
+      },
+      walking: {
+        name: google.maps.TravelMode.WALKING,
+        icon: 'icon-directions_walk'
+      },
+      transit: {
+        name: google.maps.TravelMode.TRANSIT,
+        icon: 'icon-directions_subway'
+      }
+    };
   }
 
   ngOnInit(): void {

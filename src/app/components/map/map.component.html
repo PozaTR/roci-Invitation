@@ -1,22 +1,33 @@
 <div class="map">
   <div class="map__user-address">
-    <div *ngIf="searchAddress; else inputAddress" class="map__user-address__search">
-      <span class="map__user-address__text">{{searchAddress}}</span>
-      <button type="button" class="map__user-address__delete" (click)="deleteAddress()">X</button>
+    <div class="map__user-address__info">
+      <div *ngIf="searchAddress; else inputAddress" class="map__user-address__search">
+        <span class="map__user-address__text">{{searchAddress}}</span>
+        <button type="button" class="map__user-address__delete" (click)="deleteAddress()">X</button>
+      </div>
+      <ng-template #inputAddress>
+        <form (submit)="getAddress()"
+              class="map__user-address__form"
+              [ngClass]="{'map__user-address__form--isSearching': isSearching}">
+          <input type="text" class="map__user-address__input" [(ngModel)]="userAddress" name="address" placeholder="Introduce tu dirección">
+          <button type="submit" class="map__user-address__button">
+            <span class="map__user-address__button__text">Buscar</span>
+            <span class="map__user-address__button__icon"><i class="icon-search"></i></span>
+          </button>
+        </form>
+      </ng-template>
+      <div class="map__user-address__relation">a</div>
+      <div class="map__user-address__destination">Calle Josefa Valcárcel número 10</div>
     </div>
-    <ng-template #inputAddress>
-      <form (submit)="getAddress()"
-            class="map__user-address__form"
-            [ngClass]="{'map__user-address__form--isSearching': isSearching}">
-        <input type="text" class="map__user-address__input" [(ngModel)]="userAddress" name="address" placeholder="Introduce tu dirección">
-        <button type="submit" class="map__user-address__button">
-          <span class="map__user-address__button__text">Buscar</span>
-          <span class="map__user-address__button__icon"><i class="icon-search"></i></span>
-        </button>
-      </form>
-    </ng-template>
-    <div class="map__user-address__relation">a</div>
-    <div class="map__user-address__destination">Calle Josefa Valcárcel número 10</div>
+   <div class="map__user-address__options">
+     <ul class="map__user-address__travel-modes">
+       <li *ngFor="let mode of travelModeConfig | objectKeys" class="map__user-address__mode">
+         <button class="map__user-address__mode-button">
+           <i class="map__user-address__mode-button__icon" [ngClass]="[ travelModeConfig[mode].icon ]"></i>
+         </button>
+       </li>
+     </ul>
+   </div>
   </div>
   <div #mapContainer id="map"></div>
 </div>

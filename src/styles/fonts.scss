@@ -25,6 +25,18 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-directions_bike:before {
+  content: "\e90c";
+}
+.icon-directions_car:before {
+  content: "\e90d";
+}
+.icon-directions_subway:before {
+  content: "\e90e";
+}
+.icon-directions_walk:before {
+  content: "\e90f";
+}
 .icon-clear:before {
   content: "\e90a";
 }

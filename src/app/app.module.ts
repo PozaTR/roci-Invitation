@@ -14,6 +14,7 @@ import { MapComponent } from './components/map/map.component';
 import { RsvpComponent } from './components/rsvp/rsvp.component';
 import { MainHeaderComponent } from './components/main-header/main-header.component';
 import {FormsModule} from '@angular/forms';
+import { ObjectKeysPipe } from './pipes/object-keys.pipe';
 
 
 
@@ -24,7 +25,8 @@ import {FormsModule} from '@angular/forms';
     CarrouselComponent,
     MapComponent,
     RsvpComponent,
-    MainHeaderComponent
+    MainHeaderComponent,
+    ObjectKeysPipe
   ],
   imports: [
     BrowserModule,
