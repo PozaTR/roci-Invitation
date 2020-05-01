@@ -9,6 +9,8 @@ export class MapComponent implements OnInit, AfterViewInit {
   @ViewChild('mapContainer', {static: false}) gmap: ElementRef;
   map: google.maps.Map;
   geocoder: google.maps.Geocoder;
+  directionsService: google.maps.DirectionsService;
+  directionsRenderer: google.maps.DirectionsRenderer;
   private lat: number;
   private lng: number;
   private coordinates: google.maps.LatLng;
@@ -36,6 +38,8 @@ export class MapComponent implements OnInit, AfterViewInit {
     this.userAddress = '';
     this.searchAddress = '';
     this.isSearching = false;
+    this.directionsService = new google.maps.DirectionsService();
+    this.directionsRenderer = new google.maps.DirectionsRenderer();
   }
 
   ngOnInit(): void {
@@ -49,6 +53,7 @@ export class MapComponent implements OnInit, AfterViewInit {
     this.map = new google.maps.Map(this.gmap.nativeElement, this.mapOptions);
     this.marker.setMap(this.map);
     this.geocoder = new google.maps.Geocoder();
+    this.directionsRenderer.setMap(this.map);
   }
 
   getAddress() {
@@ -56,7 +61,6 @@ export class MapComponent implements OnInit, AfterViewInit {
       this.isSearching = true;
       this.geocoder.geocode( { address: this.userAddress}, (results, status) => {
         if (status === 'OK') {
-          console.log(results);
           this.searchAddress = results[0].formatted_address;
           this.searchMarker = new google.maps.Marker({
             map: this.map,
@@ -64,17 +68,30 @@ export class MapComponent implements OnInit, AfterViewInit {
             animation: google.maps.Animation.DROP
           });
           const bounds =  new google.maps.LatLngBounds();
-          const loc = new google.maps.LatLng(this.searchMarker.getPosition().lat(), this.searchMarker.getPosition().lng());
-          bounds.extend(loc);
+          const addressLatLng = new google.maps.LatLng(this.searchMarker.getPosition().lat(), this.searchMarker.getPosition().lng());
+          bounds.extend(addressLatLng);
           bounds.extend(this.coordinates);
           this.map.fitBounds(bounds);
           this.map.panToBounds(bounds);
+          this.getRoute(addressLatLng, this.coordinates);
         } else {
           alert('Geocode was not successful for the following reason: ' + status);
         }
         this.isSearching = false;
       });
     }
+  }
+
+  getRoute(
+    origin: google.maps.LatLng,
+    destination: google.maps.LatLng,
+    travelMode: google.maps.TravelMode = google.maps.TravelMode.TRANSIT
+  ) {
+    this.directionsService.route({origin, destination, travelMode}, (result, status) => {
+      if (status === 'OK') {
+        this.directionsRenderer.setDirections(result);
+      }
+    });
   }
 
   deleteAddress() {
