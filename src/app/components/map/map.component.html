@@ -10,7 +10,7 @@
               class="map__user-address__form"
               [ngClass]="{'map__user-address__form--isSearching': isSearching}">
           <input type="text" class="map__user-address__input" [(ngModel)]="userAddress" name="address" placeholder="Introduce tu dirección">
-          <button type="submit" class="map__user-address__button">
+          <button [disabled]="!userAddress" type="submit" class="map__user-address__button">
             <span class="map__user-address__button__text">Buscar</span>
             <span class="map__user-address__button__icon"><i class="icon-search"></i></span>
           </button>

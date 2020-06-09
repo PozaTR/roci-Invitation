@@ -21,6 +21,9 @@
     }
 
     &__form {
+      align-items: center;
+      display: flex;
+      justify-content: center;
       max-width: 273px;
 
       &--isSearching {
@@ -60,16 +63,50 @@
     }
 
     &__destination {
-      padding-left: pxToRem($space-xs);
-      width: 100%;
+      max-width: 273px;
+      text-align: center;
+    }
+
+    &__travel-modes {
+      display: flex;
+      padding-top: pxToRem($space-md);
+    }
+
+    &__mode {
+      $travelMode: &;
+      &:nth-child(-n + 2) {
+        #{$travelMode}-button {
+          border-right: none;
+        }
+      }
+      &-button {
+        background-color: $c-white;
+        border: 1px solid $c-alternative;
+        color: $c-alternative;
+        padding: pxToRem($space-xs) pxToRem($space-sm);
+
+        &--active {
+          background-color: $c-alternative;
+          color: $c-white;
+        }
+
+        &__icon {
+          font-size: pxToRem($ts-icon-lg);
+        }
+      }
     }
   }
 
 
   @media all and(min-width: 768px) {
     &__user-address {
+      align-items: flex-end;;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
       &__form {
-        max-width: 325px;
+        max-width: 330px;
       }
 
       &__input {
@@ -87,7 +124,23 @@
       }
 
       &__relation {
-        max-width: 325px;
+        max-width: 330px;
+      }
+
+      &__destination {
+        max-width: 330px;
+      }
+
+      &__travel-modes {
+        padding: 0;
+      }
+
+      &__mode {
+        &-button {
+          &__icon {
+            font-size: pxToRem($ts-icon-lg);
+          }
+        }
       }
     }
   }

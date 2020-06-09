@@ -43,17 +43,17 @@ export class MapComponent implements OnInit, AfterViewInit {
     this.directionsService = new google.maps.DirectionsService();
     this.directionsRenderer = new google.maps.DirectionsRenderer();
     this.travelModeConfig = {
-      driving: {
-        name: google.maps.TravelMode.DRIVING,
-        icon: 'icon-directions_car'
-      },
-      walking: {
-        name: google.maps.TravelMode.WALKING,
-        icon: 'icon-directions_walk'
-      },
       transit: {
         name: google.maps.TravelMode.TRANSIT,
         icon: 'icon-directions_subway'
+      },
+      walking: {
+      name: google.maps.TravelMode.WALKING,
+        icon: 'icon-directions_walk'
+      },
+      driving: {
+        name: google.maps.TravelMode.DRIVING,
+        icon: 'icon-directions_car'
       }
     };
     this.activeTravelMode = google.maps.TravelMode.TRANSIT;
@@ -77,7 +77,7 @@ export class MapComponent implements OnInit, AfterViewInit {
     if (!this.isSearching) {
       this.activeTravelMode = travelMode;
       this.isSearching = true;
-      this.geocoder.geocode( { address: this.userAddress}, (results, status) => {
+      this.geocoder.geocode( { address: this.userAddress, region: 'es' }, (results, status) => {
         if (status === 'OK') {
           this.searchAddress = results[0].formatted_address;
           this.searchMarker = new google.maps.Marker({

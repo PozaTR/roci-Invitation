@@ -21,6 +21,10 @@
 
   &__text {
     line-height: 1.4;
+
+    &--map {
+      padding-top: pxToRem($space-md);
+    }
   }
 
   &__carrousel {
