@@ -20,9 +20,12 @@
       <div class="map__user-address__destination">Calle Josefa Valcárcel número 10</div>
     </div>
    <div class="map__user-address__options">
-     <ul class="map__user-address__travel-modes">
+     <ul class="map__user-address__travel-modes" *ngIf="searchAddress">
        <li *ngFor="let mode of travelModeConfig | objectKeys" class="map__user-address__mode">
-         <button class="map__user-address__mode-button">
+         <button class="map__user-address__mode-button"
+                 (click)="getAddress(travelModeConfig[mode].name)"
+                 [ngClass]="{'map__user-address__mode-button--active': travelModeConfig[mode].name === activeTravelMode}"
+         >
            <i class="map__user-address__mode-button__icon" [ngClass]="[ travelModeConfig[mode].icon ]"></i>
          </button>
        </li>

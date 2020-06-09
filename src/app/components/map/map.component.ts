@@ -21,6 +21,7 @@ export class MapComponent implements OnInit, AfterViewInit {
   public searchAddress: string;
   public isSearching: boolean;
   public travelModeConfig: object;
+  public activeTravelMode: google.maps.TravelMode;
 
   constructor() {
     this.lat = 40.448318;
@@ -55,6 +56,7 @@ export class MapComponent implements OnInit, AfterViewInit {
         icon: 'icon-directions_subway'
       }
     };
+    this.activeTravelMode = google.maps.TravelMode.TRANSIT;
   }
 
   ngOnInit(): void {
@@ -71,8 +73,9 @@ export class MapComponent implements OnInit, AfterViewInit {
     this.directionsRenderer.setMap(this.map);
   }
 
-  getAddress() {
+  getAddress(travelMode: google.maps.TravelMode = google.maps.TravelMode.TRANSIT) {
     if (!this.isSearching) {
+      this.activeTravelMode = travelMode;
       this.isSearching = true;
       this.geocoder.geocode( { address: this.userAddress}, (results, status) => {
         if (status === 'OK') {
@@ -88,7 +91,7 @@ export class MapComponent implements OnInit, AfterViewInit {
           bounds.extend(this.coordinates);
           this.map.fitBounds(bounds);
           this.map.panToBounds(bounds);
-          this.getRoute(addressLatLng, this.coordinates);
+          this.getRoute(addressLatLng, this.coordinates, travelMode);
         } else {
           alert('Geocode was not successful for the following reason: ' + status);
         }
