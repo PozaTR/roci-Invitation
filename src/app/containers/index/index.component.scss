@@ -38,3 +38,11 @@
     margin-top: pxToRem(-$space-md);
   }
 }
+
+input:valid {
+  background-color: powderblue;
+}
+
+input:invalid {
+  background-color: pink;
+}
