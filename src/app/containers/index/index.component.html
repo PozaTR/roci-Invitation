@@ -22,13 +22,13 @@
   <span id="rsvp" class="anchor-nav__helper"></span>
   <h2 class="index__title">Confirmación</h2>
   <p class="index__text">Por favor, confirma tu asistencia indicando el número de personas antes del día 3 de septiembre.</p>
-  <div class="rsvp__name">
-    <label for="guestName" class="rsvp__label">Nombre y apellido</label>
-    <input type="text"  pattern="^[A-zÀ-ú ]{3,}$" required  class="rsvp__input rsvp__name" id="guestName" [(ngModel)]="guestName">
+  <div class="index__rsvp__info index__rsvp__name">
+    <label for="guestName" class="index__rsvp__label">Nombre y apellido</label>
+    <input type="text"  pattern="^[A-zÀ-ú ]{3,}$" required  class="index__rsvp__input index__rsvp__name" id="guestName" [(ngModel)]="guestName">
   </div>
-  <div class="rsvp__tlf">
-    <label for="phone" class="rsvp__label">Tlf</label>
-    <input type="tel" pattern="[0-9]{9}" required class="rsvp__input rsvp__number" id="phone" [(ngModel)]="guestPhone">
+  <div class="index__rsvp__info index__rsvp__tlf">
+    <label for="phone" class="index__rsvp__label">Tlf</label>
+    <input type="tel" pattern="[0-9]{9}" required class="index__rsvp__input index__rsvp__number" id="phone" [(ngModel)]="guestPhone">
   </div>
   <div class="index__map" app-rsvp (guestInfo)="sendGuestInfo($event)"></div>
   <p class="index__text">Si tienes cualquier pregunta te puedes poner en contacoto conmigo.</p>

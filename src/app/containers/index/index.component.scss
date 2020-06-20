@@ -31,6 +31,19 @@
     margin: 0 auto;
     padding-bottom: pxToRem($space-sm);
   }
+
+  &__rsvp {
+    &__info {
+      align-items: flex-start;
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__input {
+      border: 1px solid $c-alternative;
+
+    }
+  }
 }
 
 ::ng-deep {
