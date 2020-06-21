@@ -20,10 +20,11 @@ export class IndexComponent implements OnInit {
   public guestPhone: number;
   private guestId: string;
   public guestInfo: Guest;
+  public rsvp: RsvpInfo;
 
   constructor(private imageStorageService: ImageStorageService, private guestService: GuestService) {
     this.pictureUrls = [];
-    this.guestId = '659743654';
+    this.guestId = '659743684';
   }
 
   ngOnInit(): void {
@@ -31,14 +32,27 @@ export class IndexComponent implements OnInit {
       this.pictureUrls = pictureUrls;
     });
     this.guestService.getGuest(this.guestId).subscribe(guest => {
+      console.log('guest', guest);
       this.guestInfo = guest;
+      this.rsvp = {
+        amount: guest.amount,
+        willAssist: !!guest.amount,
+      };
       console.log('this.guestInfo', this.guestInfo);
     });
   }
 
+  nameChange(event) {
+    this.guestInfo.name = event.target.value;
+  }
+
+  phoneChange(event) {
+    this.guestInfo.phone = event.target.value;
+  }
+
   sendGuestInfo(rsvpInfo: RsvpInfo) {
     const guestInfo: GuestInfo  = {
-      number: rsvpInfo.number,
+      amount: rsvpInfo.amount,
       willAssist: rsvpInfo.willAssist,
       name: this.guestName,
       phone: this.guestPhone,

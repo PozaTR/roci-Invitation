@@ -1,4 +1,4 @@
 export interface RsvpInfo {
-  number: number;
+  amount: number;
   willAssist: boolean;
 }

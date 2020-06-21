@@ -24,13 +24,32 @@
   <p class="index__text">Por favor, confirma tu asistencia indicando el número de personas antes del día 3 de septiembre.</p>
   <div class="index__rsvp__info index__rsvp__name">
     <label for="guestName" class="index__rsvp__label">Nombre y apellido</label>
-    <input type="text"  pattern="^[A-zÀ-ú ]{3,}$" required  class="index__rsvp__input index__rsvp__name" id="guestName" [(ngModel)]="guestName">
+    <input type="text"
+           pattern="^[A-zÀ-ú ]{3,}$"
+           required
+           class="index__rsvp__input index__rsvp__name"
+           id="guestName"
+           name="name"
+           placeholder="Escribe tu nombre"
+           [value]="guestInfo?.name"
+           (keyup)="nameChange($event)">
   </div>
   <div class="index__rsvp__info index__rsvp__tlf">
     <label for="phone" class="index__rsvp__label">Tlf</label>
-    <input type="tel" pattern="[0-9]{9}" required class="index__rsvp__input index__rsvp__number" id="phone" [(ngModel)]="guestPhone">
+    <input type="tel"
+           pattern="[0-9]{9}"
+           required
+           class="index__rsvp__input index__rsvp__number"
+           id="phone"
+           name="phone"
+           placeholder="Escribe tu tlf"
+           [value]="guestInfo?.phone"
+           (keyup)="phoneChange($event)">
   </div>
-  <div class="index__map" app-rsvp (guestInfo)="sendGuestInfo($event)"></div>
+  <div class="index__map" app-rsvp
+       [guestInfo]="rsvp"
+       (onGuestInfo)="sendGuestInfo($event)">
+  </div>
   <p class="index__text">Si tienes cualquier pregunta te puedes poner en contacoto conmigo.</p>
   <p class="index__text">Tlf: 616167267</p>
   <p class="index__text">Email: rtejedagala@gmail.com</p>

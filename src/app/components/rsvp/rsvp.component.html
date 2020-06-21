@@ -1,17 +1,28 @@
 <div class="rsvp">
   <div class="rsvp__check">
-    <label for="check" class="rsvp__label">Marca la casilla para confirmar</label>
-    <input type="checkbox" class="rsvp__checkbox" id="check" (click)="getActiveCheck()">
+    <label for="assist" class="rsvp__label">Marca la casilla para confirmar</label>
+    <input type="checkbox"
+           class="rsvp__checkbox"
+           id="assist"
+           name="assist"
+           (change)="getActiveCheck()"
+           [checked]="guestInfo?.willAssist">
   </div>
-  <div *ngIf="activeCheck" class="rsvp__guest__container">
-    <label for="guest" class="rsvp__guest__label">¿Cuántos invitados vais a venir?</label>
+  <div *ngIf="guestInfo?.willAssist" class="rsvp__guest__container">
+    <label for="amount" class="rsvp__guest__label">¿Cuántos invitados vais a venir?</label>
     <div class="rsvp__guest__info">
-      <input type="number" class="rsvp__guest" id="guest" pattern="^[1-9]{1}$" required [(ngModel)]="guestCount"  (keypress)="countChange($event)">
+      <input type="number"
+             class="rsvp__guest"
+             id="amount"
+             name="amount"
+             pattern="^[1-9]{1}$"
+             required [value]="guestInfo?.amount"
+             (keypress)="countChange($event)">
       <div class="rsvp__guest__buttons">
         <button type="button" class="rsvp__guest__plus" (click)="addGuest()">+</button>
         <button type="button" class="rsvp__guest__plus" (click)="substractGuest()">-</button>
        </div>
     </div>
   </div>
-  <button *ngIf="activeCheck" type="submit" class="rsvp__search" (click)="sendGuestInfo(guestCount)">Enviar</button>
+  <button *ngIf="guestInfo?.willAssist" type="submit" class="rsvp__search" (click)="sendGuestInfo(guestInfo.amount)">Enviar</button>
 </div>

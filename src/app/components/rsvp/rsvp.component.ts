@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { RsvpInfo } from '../../../interfaces/rsvp-event';
 
 @Component({
@@ -8,34 +8,32 @@ import { RsvpInfo } from '../../../interfaces/rsvp-event';
 })
 
 export class RsvpComponent implements OnInit {
-  @Output() guestInfo: EventEmitter<RsvpInfo>;
-  public activeCheck: boolean;
-  public guestCount: number;
+  @Input() guestInfo: RsvpInfo;
+  // tslint:disable-next-line:no-output-on-prefix
+  @Output() onGuestInfo: EventEmitter<RsvpInfo>;
 
   constructor() {
-    this.guestInfo = new EventEmitter();
-    this.activeCheck = false;
-    this.guestCount = 1;
+    this.onGuestInfo = new EventEmitter();
   }
 
   ngOnInit(): void {
   }
 
   getActiveCheck() {
-    this.activeCheck = !this.activeCheck;
-    if (!this.activeCheck) {
-      this.guestInfo.emit({number: 0, willAssist: false});
-      console.log('funciono', {number: 0, willAssist: false});
+    this.guestInfo.willAssist = !this.guestInfo.willAssist;
+    if (!this.guestInfo.willAssist) {
+      this.onGuestInfo.emit({ amount: 0, willAssist: false });
+      console.log('funciono', { amount: 0, willAssist: false });
     }
   }
 
   addGuest() {
-    this.guestCount++;
+    this.guestInfo.amount++;
   }
 
   substractGuest() {
-    if (this.guestCount > 1) {
-      this.guestCount--;
+    if (this.guestInfo.amount > 1) {
+      this.guestInfo.amount--;
     }
   }
 
@@ -43,12 +41,14 @@ export class RsvpComponent implements OnInit {
    if (event.code === 'KeyE') {
      event.preventDefault();
      return false;
+   } else {
+     this.guestInfo.amount = event.target.value;
    }
   }
 
   sendGuestInfo(count: number) {
-    this.guestInfo.emit({number: count, willAssist: true});
-    console.log('funciono', {number: count, willAssist: true});
+    this.onGuestInfo.emit({ amount: count, willAssist: true });
+    console.log('funciono', { amount: count, willAssist: true });
   }
 
 }
