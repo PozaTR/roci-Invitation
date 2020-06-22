@@ -3,3 +3,4 @@ export interface Guest {
   phone: number;
   amount: number;
 }
+

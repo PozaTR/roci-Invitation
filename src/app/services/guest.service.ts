@@ -18,4 +18,8 @@ export class GuestService {
     console.log(`guests/${guestId}`)
     return this.database.object<Guest>(`guests/${guestId}`).valueChanges();
   }
+
+  async updateGuest(guest: Guest): Promise<any> {
+    return this.database.object<Guest>(`guests/${guest.phone}`).set(guest);
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges} from '@angular/core';
 import { RsvpInfo } from '../../../interfaces/rsvp-event';
 
 @Component({
@@ -7,23 +7,32 @@ import { RsvpInfo } from '../../../interfaces/rsvp-event';
   styleUrls: ['./rsvp.component.scss']
 })
 
-export class RsvpComponent implements OnInit {
+export class RsvpComponent implements OnInit, OnChanges {
   @Input() guestInfo: RsvpInfo;
   // tslint:disable-next-line:no-output-on-prefix
   @Output() onGuestInfo: EventEmitter<RsvpInfo>;
+  public willAssist: boolean;
 
   constructor() {
     this.onGuestInfo = new EventEmitter();
+    this.willAssist = false;
   }
 
   ngOnInit(): void {
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.guestInfo && changes.guestInfo.currentValue) {
+      this.willAssist = !!changes.guestInfo.currentValue.amount;
+    }
+  }
+
   getActiveCheck() {
-    this.guestInfo.willAssist = !this.guestInfo.willAssist;
-    if (!this.guestInfo.willAssist) {
-      this.onGuestInfo.emit({ amount: 0, willAssist: false });
-      console.log('funciono', { amount: 0, willAssist: false });
+    this.willAssist = !this.willAssist;
+    if (this.willAssist) {
+      this.onGuestInfo.emit({ amount: 1 });
+    } else {
+      this.onGuestInfo.emit({ amount: 0 });
     }
   }
 
@@ -47,8 +56,7 @@ export class RsvpComponent implements OnInit {
   }
 
   sendGuestInfo(count: number) {
-    this.onGuestInfo.emit({ amount: count, willAssist: true });
-    console.log('funciono', { amount: count, willAssist: true });
+    this.onGuestInfo.emit({ amount: count });
   }
 
 }

@@ -3,6 +3,7 @@ import { ImageStorageService } from '../../services/image-storage.service';
 import { GuestService } from '../../services/guest.service';
 import { RsvpInfo } from '../../../interfaces/rsvp-event';
 import { Guest } from '../../../interfaces/guest';
+import { Response } from '../../../interfaces/response';
 
 interface GuestInfo extends RsvpInfo {
   name: string;
@@ -16,14 +17,14 @@ interface GuestInfo extends RsvpInfo {
 })
 export class IndexComponent implements OnInit {
   public pictureUrls: string[];
-  public guestName: string;
-  public guestPhone: number;
   private guestId: string;
   public guestInfo: Guest;
   public rsvp: RsvpInfo;
+  public response: Response;
 
   constructor(private imageStorageService: ImageStorageService, private guestService: GuestService) {
     this.pictureUrls = [];
+    this.response = {};
     this.guestId = '659743684';
   }
 
@@ -32,13 +33,10 @@ export class IndexComponent implements OnInit {
       this.pictureUrls = pictureUrls;
     });
     this.guestService.getGuest(this.guestId).subscribe(guest => {
-      console.log('guest', guest);
       this.guestInfo = guest;
       this.rsvp = {
-        amount: guest.amount,
-        willAssist: !!guest.amount,
+        amount: guest.amount
       };
-      console.log('this.guestInfo', this.guestInfo);
     });
   }
 
@@ -50,13 +48,20 @@ export class IndexComponent implements OnInit {
     this.guestInfo.phone = event.target.value;
   }
 
-  sendGuestInfo(rsvpInfo: RsvpInfo) {
+  async sendGuestInfo(rsvpInfo: RsvpInfo) {
     const guestInfo: GuestInfo  = {
       amount: rsvpInfo.amount,
-      willAssist: rsvpInfo.willAssist,
-      name: this.guestName,
-      phone: this.guestPhone,
+      name: this.guestInfo.name.trim(),
+      phone: this.guestInfo.phone,
     };
-    console.log('funciono en el padre', guestInfo);
+    try {
+      await this.guestService.updateGuest(guestInfo);
+      this.response.success = 'Hemos guardado tu información correctamente';
+    } catch (err) {
+      this.response.error = 'Ha ocurrido un error. Por favor, vuelve a intentarlo.';
+    }
+    setTimeout(() => {
+      this.response = {};
+    }, 2000);
   }
 }
