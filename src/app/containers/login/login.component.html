@@ -1,0 +1,14 @@
+<div class="login">
+    <p class="login__text">¡Bienvenido a mi fiesta de cumpleaños!</p>
+    <label for="phone" class="login__label">Por favor, introduce tu número de teléfono</label>
+    <input type="tel"
+           pattern="[0-9]{9}"
+           required
+           class="login__number"
+           id="phone"
+           name="phone"
+           placeholder="tlf"
+           [value]="guestPhone"
+           (keypress)="limitInputToNumbers($event)"
+           (keyup)="getPhone($event)">
+</div>
