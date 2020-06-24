@@ -1,16 +1,1 @@
-@import "variables";
-@import "mixins";
 
-:host {
-  background-color: $c-base;
-  display: block;
-  min-height: 100vh;
-}
-
-.main-content {
-  padding-top: pxToRem($header-heigth);
-}
-
-.main-footer {
-
-}
