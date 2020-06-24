@@ -15,7 +15,6 @@ export class GuestService {
   }
 
   getGuest(guestId: string): Observable<Guest> {
-    console.log(`guests/${guestId}`)
     return this.database.object<Guest>(`guests/${guestId}`).valueChanges();
   }
 

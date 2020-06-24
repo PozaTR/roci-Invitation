@@ -17,6 +17,7 @@ import { MainHeaderComponent } from './components/main-header/main-header.compon
 import { FormsModule } from '@angular/forms';
 import { ObjectKeysPipe } from './pipes/object-keys.pipe';
 import { MainComponent } from './containers/main/main.component';
+import { LoginComponent } from './containers/login/login.component';
 
 
 
@@ -29,7 +30,8 @@ import { MainComponent } from './containers/main/main.component';
     RsvpComponent,
     MainHeaderComponent,
     ObjectKeysPipe,
-    MainComponent
+    MainComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
