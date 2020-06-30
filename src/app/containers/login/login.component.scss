@@ -1,0 +1,72 @@
+@import "variables";
+@import "mixins";
+
+.login {
+  align-items: center;
+  background-color: $c-base;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  padding: pxToRem($space-md);
+
+  &__container {
+    background-color: rgba($c-primary, 0.8);
+    border: 1px solid $c-primary;
+    border-radius: 4px;
+    box-shadow: 2px 2px 2px 1px rgba($c-primary, 0.4);
+    color: $c-white;
+    padding: pxToRem($space-md);
+  }
+
+  &__info {
+    align-items: flex-start;
+    display: flex;
+    margin-bottom: pxToRem($space-md);
+
+    &__text {
+      font-size: pxToRem($ts-main-title);
+      margin-right: pxToRem($space-sm);
+    }
+
+    &__icon {
+      font-size: pxToRem($ts-main-title);
+    }
+  }
+
+  &__input {
+    border: 1px solid $c-alternative;
+    flex-grow: 1;
+    padding: pxToRem($space-sm);
+
+    &__container {
+      display: flex;
+      margin-top: pxToRem($space-sm);
+    }
+  }
+
+  &__search {
+    background-color: $c-alternative;
+    border: 1px solid #12166f;
+    color: $c-white;
+    padding: pxToRem($space-sm);
+
+    &--text {
+      display: none;
+    }
+
+    &--icon {
+      font-size: pxToRem(20);
+    }
+  }
+
+  @media all and (min-width: 768px) {
+    &__search {
+      &--text {
+        display: block;
+      }
+      &--icon {
+        display: none;
+      }
+    }
+  }
+}

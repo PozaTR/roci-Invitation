@@ -1,14 +1,29 @@
 <div class="login">
-    <p class="login__text">¡Bienvenido a mi fiesta de cumpleaños!</p>
-    <label for="phone" class="login__label">Por favor, introduce tu número de teléfono</label>
-    <input type="tel"
-           pattern="[0-9]{9}"
-           required
-           class="login__number"
-           id="phone"
-           name="phone"
-           placeholder="tlf"
-           [value]="guestPhone"
-           (keypress)="limitInputToNumbers($event)"
-           (keyup)="getPhone($event)">
+  <div class="login__container">
+    <div class="login__info">
+      <p class="login__info__text">¡Bienvenida/o a mi fiesta de cumpleaños!</p>
+      <i class="icon-cake login__info__icon"></i>
+    </div>
+    <div class="login__guest">
+      <label for="phone" class="login__label">Por favor, introduce tu número de teléfono.</label>
+      <div class="login__input__container">
+        <input type="tel"
+               pattern="[0-9]{9}"
+               required
+               class="login__input"
+               id="phone"
+               name="phone"
+               placeholder="Teléfono"
+               [value]="guestPhone"
+               (keypress)="limitInputToNumbers($event)"
+               (keyup)="getPhone($event)">
+        <button type="submit" class="login__search" (click)="sendGuestPhone(guestPhone)">
+          <span class="login__search--text">Enviar</span>
+          <i class="icon-search login__search--icon"></i>
+        </button>
+      </div>
+    </div>
+    </div>
+  <p *ngIf="response.error" class="index__response">{{ response.error }}</p>
 </div>
+
