@@ -38,9 +38,6 @@ export class CarrouselComponent implements OnInit, OnChanges, OnDestroy {
     if (changes.pictureUrls.currentValue.length) {
       setTimeout(() => {
         this.imageWidth = this.carrousel.nativeElement.children[0].offsetWidth;
-        console.log('this.carrousel.nativeElement.children[0]', this.carrousel.nativeElement.children[0].offsetWidth)
-        console.log('this.carrousel.nativeElement.children[0]', this.carrousel.nativeElement.children[0].children[0].offsetWidth)
-        console.log(this.imageWidth);
       }, 100);
     }
   }
