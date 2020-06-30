@@ -1,7 +1,63 @@
-input:valid {
-  background-color: powderblue;
-}
+@import "variables";
+@import "mixins";
 
 input:invalid {
-  background-color: pink;
+  border: 1px solid $c-error;
+}
+
+.rsvp {
+  padding: pxToRem($space-md) pxToRem(0);
+
+  &__checkbox {
+    align-items: center;
+    display: flex;
+
+    &__label {
+      margin-right: pxToRem($space-xs);
+    }
+  }
+
+  &__guest {
+    margin: pxToRem($space-md)  pxToRem(0);
+
+    &__input {
+      display: flex;
+      margin-top: pxToRem($space-sm);
+    }
+
+    &__number {
+      border: 1px solid $c-alternative;
+      border-bottom-left-radius: 4px;
+      border-top-left-radius: 4px;
+      padding: pxToRem($space-xs);
+    }
+
+    &__button {
+      background-color: $c-primary;
+      border: 1px solid $c-alternative;
+      color: $c-white;
+      font-size: $ts-icon-xs;
+      line-height: 1;
+      padding: pxToRem($space-xs + 2) pxToRem($space-sm);
+
+      &--plus {
+        border-left: transparent;
+        border-right-color: $c-white;
+      }
+
+      &--minus {
+        border-left: none;
+        border-bottom-right-radius: 4px;
+        border-top-right-radius: 4px;
+      }
+    }
+  }
+
+  &__send {
+    background-color: $c-alternative;
+    border: 1px solid $c-alternative;
+    border-radius: 4px;
+    color: $c-white;
+    padding: pxToRem($space-xs + 2)  pxToRem($space-sm);
+  }
 }
