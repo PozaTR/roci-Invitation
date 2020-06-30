@@ -18,6 +18,7 @@ import { FormsModule } from '@angular/forms';
 import { ObjectKeysPipe } from './pipes/object-keys.pipe';
 import { MainComponent } from './containers/main/main.component';
 import { LoginComponent } from './containers/login/login.component';
+import {AuthGuardService} from './services/guards/auth-guards.service';
 
 
 
@@ -42,7 +43,7 @@ import { LoginComponent } from './containers/login/login.component';
     AngularFireStorageModule,
     FormsModule
   ],
-  providers: [],
+  providers: [AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

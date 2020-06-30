@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ImageStorageService } from '../../services/image-storage.service';
+import { AuthService } from '../../services/auth.service';
 import { GuestService } from '../../services/guest.service';
 import { RsvpInfo } from '../../../interfaces/rsvp-event';
 import { Guest } from '../../../interfaces/guest';
@@ -22,16 +23,17 @@ export class IndexComponent implements OnInit {
   public rsvp: RsvpInfo;
   public response: Response;
 
-  constructor(private imageStorageService: ImageStorageService, private guestService: GuestService) {
+  constructor(private imageStorageService: ImageStorageService, private guestService: GuestService, private authService: AuthService) {
     this.pictureUrls = [];
     this.response = {};
-    this.guestId = '659743684';
+    this.guestId = '';
   }
 
   ngOnInit(): void {
     this.imageStorageService.getPictures().then(pictureUrls => {
       this.pictureUrls = pictureUrls;
     });
+    this.guestId = (this.authService.guestId).toString();
     this.guestService.getGuest(this.guestId).subscribe(guest => {
       this.guestInfo = guest;
       this.rsvp = {
