@@ -27,8 +27,7 @@ export class LoginComponent implements OnInit {
       '6',
       '7',
       '8',
-      '9',
-      'Enter'
+      '9'
     ];
     this.response = {};
   }
@@ -37,9 +36,7 @@ export class LoginComponent implements OnInit {
   }
 
   limitInputToNumbers(event) {
-    console.log(event)
-    if (!this.validKeys.find(key => key === event.key) || this.guestPhone.length >= 9) {
-      console.log('ok enters')
+    if (event.key !== 'Enter' && (!this.validKeys.find(key => key === event.key) || this.guestPhone.length >= 9)) {
       event.preventDefault();
       return false;
     }
@@ -51,16 +48,18 @@ export class LoginComponent implements OnInit {
 
   async sendGuestPhone(phone: string) {
     try {
+      if (!phone) {
+        throw new Error('Debes introducir un número de teléfono');
+      }
       const guest = await this.guestService.getGuest(phone).pipe(first()).toPromise();
       if (guest) {
-        console.log('guest', guest);
         this.authService.guestId = guest.phone;
         this.router.navigate(['/app']);
       } else {
-        this.response.error = 'No hemos encontrado tu número de teléfono. Por favor, contacta con Rocío.';
+        throw new Error('No hemos encontrado tu número de teléfono. Por favor, contacta con Rocío.');
       }
     } catch (e) {
-      this.response.error = 'Ha ocurrido un error. Por favor, vuelve a intentarlo.';
+      this.response.error = e ? e.message : 'Ha ocurrido un error. Por favor, vuelve a intentarlo.';
     }
 
     setTimeout(() => {
