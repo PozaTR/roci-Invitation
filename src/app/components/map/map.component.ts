@@ -22,6 +22,11 @@ export class MapComponent implements OnInit, AfterViewInit {
   public isSearching: boolean;
   public travelModeConfig: object;
   public activeTravelMode: google.maps.TravelMode;
+  public travelInstructions: {
+    duration: string,
+    steps: string[]
+  };
+  public isTravelInstructionsClose: boolean;
 
   constructor() {
     this.lat = 40.448318;
@@ -57,6 +62,7 @@ export class MapComponent implements OnInit, AfterViewInit {
       }
     };
     this.activeTravelMode = google.maps.TravelMode.TRANSIT;
+    this.isTravelInstructionsClose =  true;
   }
 
   ngOnInit(): void {
@@ -108,6 +114,12 @@ export class MapComponent implements OnInit, AfterViewInit {
     this.directionsService.route({origin, destination, travelMode}, (result, status) => {
       if (status === 'OK') {
         this.directionsRenderer.setDirections(result);
+        this.travelInstructions = {
+          duration: result.routes[0].legs[0].duration.text,
+          steps: result.routes[0].legs[0].steps.map(step => {
+            return `${step.instructions} ${step.duration.text} (${step.distance.text})`;
+          })
+        };
       }
     });
   }
@@ -116,5 +128,10 @@ export class MapComponent implements OnInit, AfterViewInit {
     this.searchAddress = '';
     this.userAddress = '';
     this.searchMarker.setMap(null);
+  }
+
+  toggleTravelInstructions() {
+    this.isTravelInstructionsClose =  !this.isTravelInstructionsClose;
+    console.log(this.isTravelInstructionsClose);
   }
 }

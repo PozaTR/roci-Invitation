@@ -97,6 +97,35 @@
     }
   }
 
+  &__travel-instructions {
+    padding: pxToRem($space-md);
+    background-color: $c-white;
+    border-radius: 4px;
+    margin-bottom: pxToRem($space-md);
+
+    &__title {
+      font-weight: $t-black;
+    }
+
+    &__icon {
+      display: none;
+    }
+
+    &__list {
+      margin-top: pxToRem($space-md);
+    }
+
+    &__duration {
+      display: inline-block;
+    }
+
+    &__text {
+      & + & {
+        margin-top: pxToRem($space-sm);
+      }
+    }
+  }
+
 
   @media all and(min-width: 768px) {
     &__user-address {
@@ -140,6 +169,53 @@
           &__icon {
             font-size: pxToRem($ts-icon-lg);
           }
+        }
+      }
+    }
+
+    &__container {
+      position: relative;
+    }
+
+    &__travel-instructions {
+      $travelInstructions: &;
+      background-color: rgba($c-white, 0.9);
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 1;
+      max-width: 30%;
+      opacity: 0.7;
+
+      &:hover {
+        background-color: $c-white;
+        opacity: 1;
+
+        #{$travelInstructions}__list {
+          opacity: 1;
+        }
+      }
+
+      &__title {
+        padding-right: pxToRem(40);
+        position: relative;
+      }
+
+      &__icon {
+        display: inline-block;
+        position: absolute;
+        right: 0;
+        top: 0;
+
+        &--closed {
+          transform: rotate(180deg);
+        }
+      }
+
+      &__list {
+        opacity: 0.5;
+        &--closed {
+          display: none;
         }
       }
     }
