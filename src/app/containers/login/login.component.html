@@ -6,7 +6,7 @@
     </div>
     <div class="login__guest">
       <label for="phone" class="login__label">Por favor, introduce tu número de teléfono.</label>
-      <div class="login__input__container">
+      <form class="login__input__container" (submit)="sendGuestPhone(guestPhone)">
         <input type="tel"
                pattern="[0-9]{9}"
                required
@@ -17,11 +17,11 @@
                [value]="guestPhone"
                (keypress)="limitInputToNumbers($event)"
                (keyup)="getPhone($event)">
-        <button type="submit" class="login__search" (click)="sendGuestPhone(guestPhone)">
+        <button type="submit" class="login__search">
           <span class="login__search--text">Enviar</span>
           <i class="icon-search login__search--icon"></i>
         </button>
-      </div>
+      </form>
     </div>
     </div>
   <p *ngIf="response.error" class="index__response">{{ response.error }}</p>

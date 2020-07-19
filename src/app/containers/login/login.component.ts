@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit {
   limitInputToNumbers(event) {
     console.log(event)
     if (!this.validKeys.find(key => key === event.key) || this.guestPhone.length >= 9) {
+      console.log('ok enters')
       event.preventDefault();
       return false;
     }
