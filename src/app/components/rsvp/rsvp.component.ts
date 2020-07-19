@@ -1,5 +1,6 @@
 import {Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges} from '@angular/core';
 import { RsvpInfo } from '../../../interfaces/rsvp-event';
+import { Response } from '../../../interfaces/response';
 
 @Component({
   selector: 'app-rsvp, [app-rsvp]',
@@ -9,6 +10,7 @@ import { RsvpInfo } from '../../../interfaces/rsvp-event';
 
 export class RsvpComponent implements OnInit, OnChanges {
   @Input() guestInfo: RsvpInfo;
+  @Input() response: Response;
   // tslint:disable-next-line:no-output-on-prefix
   @Output() onGuestInfo: EventEmitter<RsvpInfo>;
   public willAssist: boolean;

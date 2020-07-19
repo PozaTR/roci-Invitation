@@ -53,6 +53,22 @@ input:invalid {
     }
   }
 
+  &__response {
+    border-radius: 4px;
+    color: $c-white;
+    margin-bottom: pxToRem($space-md);
+    max-width: 300px;
+    padding: pxToRem($space-md);
+
+    &--success {
+      background-color: $c-success;
+    }
+
+    &--error {
+      background-color: $c-error;
+    }
+  }
+
   &__send {
     background-color: $c-alternative;
     border: 1px solid $c-alternative;

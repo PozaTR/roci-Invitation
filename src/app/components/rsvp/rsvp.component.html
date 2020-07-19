@@ -28,5 +28,7 @@
        </div>
     </div>
   </div>
+  <p *ngIf="response.success" class="rsvp__response rsvp__response--success">{{ response.success }}</p>
+  <p *ngIf="response.error" class="rsvp__response rsvp__response--error">{{ response.error }}</p>
   <button *ngIf="willAssist" type="submit" class="rsvp__send" (click)="sendGuestInfo(guestInfo.amount)">Enviar</button>
 </div>

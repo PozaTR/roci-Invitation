@@ -50,6 +50,7 @@
     </div>
   </div>
   <div class="index__map" app-rsvp
+       [response]="response"
        [guestInfo]="rsvp"
        (onGuestInfo)="sendGuestInfo($event)">
   </div>
@@ -62,6 +63,4 @@
     <span class="index__text--title">Email:</span>
     rtejedagala@gmail.com</p>
 </section>
-<p *ngIf="response.success" class="index__response">{{ response.success }}</p>
-<p *ngIf="response.error" class="index__response">{{ response.error }}</p>
 
