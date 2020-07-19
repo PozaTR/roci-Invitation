@@ -28,7 +28,11 @@
        </div>
     </div>
   </div>
-  <p *ngIf="response.success" class="rsvp__response rsvp__response--success">{{ response.success }}</p>
-  <p *ngIf="response.error" class="rsvp__response rsvp__response--error">{{ response.error }}</p>
+  <p *ngIf="response.success" class="rsvp__response rsvp__response--success">{{ response.success }}
+    <i class="rsvp__response__icon icon-thumb_up"></i>
+  </p>
+  <p *ngIf="response.error" class="rsvp__response rsvp__response--error">{{ response.error }}
+    <i class="rsvp__response__icon icon-warning"></i>
+  </p>
   <button *ngIf="willAssist" type="submit" class="rsvp__send" (click)="sendGuestInfo(guestInfo.amount)">Enviar</button>
 </div>

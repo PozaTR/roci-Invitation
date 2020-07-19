@@ -55,10 +55,12 @@ input:invalid {
 
   &__response {
     border-radius: 4px;
+    box-sizing: border-box;
     color: $c-white;
     margin-bottom: pxToRem($space-md);
     max-width: 300px;
-    padding: pxToRem($space-md);
+    padding: pxToRem($space-md) pxToRem($space-md) pxToRem($space-md) pxToRem($space-sm + $space-lg);
+    position: relative;
 
     &--success {
       background-color: $c-success;
@@ -66,6 +68,12 @@ input:invalid {
 
     &--error {
       background-color: $c-error;
+    }
+
+    &__icon {
+      position: absolute;
+      left: pxToRem($space-md);
+      top: pxToRem($space-md);
     }
   }
 

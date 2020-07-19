@@ -24,6 +24,9 @@
       </form>
     </div>
     </div>
-  <p *ngIf="response.error" class="login__response">{{ response.error }}</p>
+  <p *ngIf="response.error" class="login__response">
+    <i class="rsvp__response__icon icon-warning"></i>
+    {{ response.error }}
+  </p>
 </div>
 

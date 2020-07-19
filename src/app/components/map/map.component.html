@@ -3,7 +3,9 @@
     <div class="map__user-address__info">
       <div *ngIf="searchAddress; else inputAddress" class="map__user-address__search">
         <span class="map__user-address__text">{{searchAddress}}</span>
-        <button type="button" class="map__user-address__delete" (click)="deleteAddress()">X</button>
+        <button type="button" class="map__user-address__delete" (click)="deleteAddress()">
+          <i class="map__user-address__delete__icon icon-clear"></i>
+        </button>
       </div>
       <ng-template #inputAddress>
         <form (submit)="getAddress()"
@@ -35,7 +37,7 @@
   <div class="map__container">
     <div *ngIf="travelInstructions" class="map__travel-instructions">
       <p class="map__travel-instructions__title" (click)="toggleTravelInstructions()">La duración del viaje es de <span class="map__travel-instructions__duration">{{ travelInstructions.duration }}</span>
-      <i class="map__travel-instructions__icon icon-play3" [ngClass]="{ 'map__travel-instructions__icon--closed': isTravelInstructionsClose }"></i>
+      <i class="map__travel-instructions__icon icon-expand_less" [ngClass]="{ 'map__travel-instructions__icon--closed': isTravelInstructionsClose }"></i>
       </p>
       <ol class="map__travel-instructions__list" [ngClass]="{ 'map__travel-instructions__list--closed': isTravelInstructionsClose }">
         <li *ngFor="let step of travelInstructions.steps" class="map__travel-instructions__text">{{ step }}</li>

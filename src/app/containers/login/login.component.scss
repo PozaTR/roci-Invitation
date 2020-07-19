@@ -69,7 +69,14 @@ $container-width: 480px;
     color: $c-white;
     margin-top: pxToRem($space-sm);
     max-width: $container-width;
-    padding: pxToRem($space-md);
+    padding: pxToRem($space-md) pxToRem($space-md) pxToRem($space-md) pxToRem($space-sm + $space-lg);
+    position: relative;
+
+    &__icon {
+      position: absolute;
+      left: pxToRem($space-md);
+      top: pxToRem($space-md);
+    }
   }
 
   @media all and (min-width: 768px) {

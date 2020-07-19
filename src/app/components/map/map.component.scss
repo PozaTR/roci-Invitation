@@ -12,12 +12,23 @@
     flex-direction: column;
     padding: pxToRem($space-md) 0;
 
+    &__search {
+      display: inline-block;
+      padding-right: pxToRem($space-lg + $space-xs);
+      position: relative;
+    }
+
     &__delete {
       background-color: $c-error;
       border: 1px solid $c-error;
       border-radius: 4px;
+      bottom: 0;
       color: $c-white;
-      margin-left: pxToRem($space-xs);
+      height: 26px;
+      margin: auto;
+      position: absolute;
+      top: 0;
+      right: 0;
     }
 
     &__form {
@@ -112,7 +123,11 @@
     }
 
     &__list {
+      list-style: decimal;
       margin-top: pxToRem($space-md);
+      max-height: 350px;
+      padding-left: pxToRem($space-lg);
+      overflow-y: scroll;
     }
 
     &__duration {
@@ -121,7 +136,7 @@
 
     &__text {
       & + & {
-        margin-top: pxToRem($space-sm);
+        margin-top: pxToRem($space-md - 4);
       }
     }
   }
@@ -203,6 +218,7 @@
 
       &__icon {
         display: inline-block;
+        font-size: $ts-icon-lg;
         position: absolute;
         right: 0;
         top: 0;
@@ -213,7 +229,9 @@
       }
 
       &__list {
+        max-height: 200px;
         opacity: 0.5;
+
         &--closed {
           display: none;
         }

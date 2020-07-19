@@ -117,7 +117,7 @@ export class MapComponent implements OnInit, AfterViewInit {
         this.travelInstructions = {
           duration: result.routes[0].legs[0].duration.text,
           steps: result.routes[0].legs[0].steps.map(step => {
-            return `${step.instructions} ${step.duration.text} (${step.distance.text})`;
+            return `${step.instructions.replace(/(&nbsp;|<([^>]+)>)/g, ' ')} ${step.duration.text} (${step.distance.text})`;
           })
         };
       }
@@ -132,6 +132,5 @@ export class MapComponent implements OnInit, AfterViewInit {
 
   toggleTravelInstructions() {
     this.isTravelInstructionsClose =  !this.isTravelInstructionsClose;
-    console.log(this.isTravelInstructionsClose);
   }
 }
