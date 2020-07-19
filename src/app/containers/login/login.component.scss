@@ -1,10 +1,13 @@
 @import "variables";
 @import "mixins";
 
+$container-width: 480px;
+
 .login {
   align-items: center;
   background-color: $c-base;
   display: flex;
+  flex-direction: column;
   height: 100%;
   justify-content: center;
   padding: pxToRem($space-md);
@@ -14,6 +17,7 @@
     border: 1px solid $c-primary;
     border-radius: 4px;
     box-shadow: 2px 2px 2px 1px rgba($c-primary, 0.4);
+    max-width: $container-width;
     color: $c-white;
     padding: pxToRem($space-md);
   }
@@ -57,6 +61,15 @@
     &--icon {
       font-size: pxToRem(20);
     }
+  }
+
+  &__response {
+    background-color: $c-error;
+    border-radius: 4px;
+    color: $c-white;
+    margin-top: pxToRem($space-sm);
+    max-width: $container-width;
+    padding: pxToRem($space-md);
   }
 
   @media all and (min-width: 768px) {
