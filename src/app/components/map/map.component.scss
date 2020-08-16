@@ -195,6 +195,7 @@
     &__travel-instructions {
       $travelInstructions: &;
       background-color: rgba($c-white, 0.9);
+      border: 1px solid $c-alternative;
       position: absolute;
       top: 0;
       right: 0;
