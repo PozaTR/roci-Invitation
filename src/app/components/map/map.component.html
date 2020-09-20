@@ -35,7 +35,7 @@
    </div>
   </div>
   <div class="map__container">
-    <div *ngIf="travelInstructions" class="map__travel-instructions">
+    <div *ngIf="travelInstructions && searchAddress" class="map__travel-instructions">
       <p class="map__travel-instructions__title" (click)="toggleTravelInstructions()">La duración del viaje es de <span class="map__travel-instructions__duration">{{ travelInstructions.duration }}</span>
       <i class="map__travel-instructions__icon icon-expand_less" [ngClass]="{ 'map__travel-instructions__icon--closed': isTravelInstructionsClose }"></i>
       </p>

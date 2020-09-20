@@ -76,7 +76,6 @@ export class MapComponent implements OnInit, AfterViewInit {
     this.map = new google.maps.Map(this.gmap.nativeElement, this.mapOptions);
     this.marker.setMap(this.map);
     this.geocoder = new google.maps.Geocoder();
-    this.directionsRenderer.setMap(this.map);
   }
 
   getAddress(travelMode: google.maps.TravelMode = google.maps.TravelMode.TRANSIT) {
@@ -111,6 +110,7 @@ export class MapComponent implements OnInit, AfterViewInit {
     destination: google.maps.LatLng,
     travelMode: google.maps.TravelMode = google.maps.TravelMode.TRANSIT
   ) {
+    this.directionsRenderer.setMap(this.map);
     this.directionsService.route({origin, destination, travelMode}, (result, status) => {
       if (status === 'OK') {
         this.directionsRenderer.setDirections(result);
@@ -128,6 +128,7 @@ export class MapComponent implements OnInit, AfterViewInit {
     this.searchAddress = '';
     this.userAddress = '';
     this.searchMarker.setMap(null);
+    this.directionsRenderer.setMap(null);
   }
 
   toggleTravelInstructions() {
